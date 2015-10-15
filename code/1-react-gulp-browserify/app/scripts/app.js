@@ -1,6 +1,6 @@
 'use strict';
 
-var React = window.React = require('react');
+var React = require('react');
 
 var Header = require('./ui/Header.jsx');
 var Footer = require('./ui/Footer.jsx');
