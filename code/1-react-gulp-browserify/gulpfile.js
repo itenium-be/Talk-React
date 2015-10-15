@@ -16,7 +16,7 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 // Styles
-gulp.task('styles', ['sass', 'moveCss' ]);
+gulp.task('styles', ['moveCss' ]);
 
 gulp.task('moveCss',['clean'], function(){
   // the base option sets the relative root for the set of files,
@@ -24,18 +24,6 @@ gulp.task('moveCss',['clean'], function(){
   gulp.src(['./app/styles/**/*.css'], { base: './app/styles/' })
   .pipe(gulp.dest('dist/styles'));
 });
-
-gulp.task('sass', function() {
-  return $.rubySass('./app/styles', {
-    style: 'expanded',
-    precision: 10,
-    loadPath: ['app/bower_components']
-  })
-    .pipe($.autoprefixer('last 1 version'))
-    .pipe(gulp.dest('dist/styles'))
-    .pipe($.size());
-});
-
 
 
 var bundler = watchify(browserify({
