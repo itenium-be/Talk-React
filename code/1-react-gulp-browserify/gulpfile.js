@@ -194,4 +194,4 @@ gulp.task('build', ['html', 'buildBundle', 'images', 'fonts', 'extras'], functio
 });
 
 // Default task
-gulp.task('default', ['clean', 'build', 'jest' ]);
+gulp.task('default', ['clean', 'build' ]);

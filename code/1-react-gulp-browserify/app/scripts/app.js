@@ -1,30 +1,35 @@
 'use strict';
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var Header = require('./ui/Header.jsx');
 var Footer = require('./ui/Footer.jsx');
 var Marketing = require('./ui/Marketing.jsx');
 
-var Timer = require('./ui/Timer.jsx');
 var Todo = require('./ui/Todo.jsx');
+var Timer = require('./ui/Timer.jsx');
 
 var App = React.createClass({
-  displayName: 'TheApp',
+  displayName: 'TheAmazingTodoApp',
   render: function() {
-    return (
+    var content = (
       <div>
-        <Header />
         <div className="jumbotron">
           <Todo />
           <Timer />
         </div>
         <Marketing />
+      </div>);
+
+    return (
+      <div>
+        <Header />
+        {content}
         <Footer />
-      </div>
-    );
+      </div>);
   }
 });
 
 var mountNode = document.getElementById('app');
-React.render(<App />, mountNode);
+ReactDOM.render(<App />, mountNode);
