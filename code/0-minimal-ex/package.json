@@ -1,0 +1,17 @@
+{
+  "name": "0-minimal-ex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "babelify": "^6.4.0",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wouter Van Schandevijl <woutervs@hotmail.com>",
+  "license": "ISC"
+}
