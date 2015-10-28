@@ -1,0 +1,25 @@
+JSX TECHNICAL
+=============
+https://facebook.github.io/react/html-jsx.html
+
+var x = React.createClass({
+  render: function() {
+    return (<div id="yaye">ouch</div>);
+}});
+
+https://babeljs.io/repl/
+
+var inProps = {a: 1, b: 2, c: 3};
+
+var x = React.CreateClass({
+  render: function() {
+    return (
+      <div id="yaye" {...inProps}>
+        <ul className="thaList">
+          <li>first</li>
+          <li>2nd</li>
+        </ul>
+      </div>
+    );
+  }
+});

@@ -2,6 +2,8 @@
 
 var React = require('react');
 
+// ref
+
 var Todo = React.createClass({
   displayName: 'TodoForm',
   getInitialState: function() {
@@ -23,7 +25,7 @@ var Todo = React.createClass({
         <Todo.List items={this.state.items} />
         <form onSubmit={this._handleSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
+          <button>{'Add # ' + (this.state.items.length + 1)}</button>
         </form>
       </div>
     );
@@ -33,7 +35,7 @@ var Todo = React.createClass({
 Todo.List = React.createClass({
   displayName: 'TodoList',
   propTypes: {
-    items: React.PropTypes.array
+    items: React.PropTypes.arrayOf(React.PropTypes.string)
   },
   render: function() {
     var createItem = function(itemText) {
