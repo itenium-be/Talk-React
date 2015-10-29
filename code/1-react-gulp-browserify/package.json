@@ -39,7 +39,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "gulp watch"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
