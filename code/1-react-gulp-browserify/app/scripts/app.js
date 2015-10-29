@@ -7,9 +7,6 @@ var Header = require('./ui/Header.jsx');
 var Footer = require('./ui/Footer.jsx');
 var Marketing = require('./ui/Marketing.jsx');
 
-// Show Timer.jsx first.
-// -> Add loop here and props in Timer
-
 var Todo = require('./ui/Todo.jsx');
 var Timer = require('./ui/Timer.jsx');
 

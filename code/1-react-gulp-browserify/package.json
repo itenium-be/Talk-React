@@ -2,7 +2,8 @@
   "name": "react-gulp-browserify",
   "version": "0.0.0",
   "dependencies": {
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "superagent": "^1.4.0"
   },
   "devDependencies": {
     "del": "~0.1.3",
