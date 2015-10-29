@@ -14,7 +14,7 @@ Each JSX component composes part of the screen starting from a single root objec
 
 **Declarative**:  
 **One Way Data Flow**:  
-**Virtual DOM**:  
+**Virtual DOM**:  ****
 
 No direct changes to the DOM.
 
@@ -26,11 +26,11 @@ Like a State Machine:
 Like a game engine: State changes, business rules get executed and the entire screen redrawn.
 Done like this because DOM manipulation, like 3D Graphics, is what takes longest to process.
 
-JSX:  
-class -> className
-<div dangerouslySetInnerHTML={{__html: 'First &middot; Second'}} />
-
-Spread Operator:  
+JSX
+---
+class -> className, for -> htmlFor
+```
+// Spread Operator:  
 var FancyCheckbox = React.createClass({
   render: function() {
     var { checked, ...other } = this.props;
@@ -41,6 +41,7 @@ var FancyCheckbox = React.createClass({
     );
   }
 });
+
 ReactDOM.render(
   <FancyCheckbox checked={true} onClick={console.log.bind(console)}>
     Hello world!
@@ -48,28 +49,52 @@ ReactDOM.render(
   document.getElementById('example')
 );
 
-Event Handlers: Abstracted away for IE8 and above with SynctheticEvent. One EventHandler attached at the root node. `this` set.  
-`e.preventDefault()`
+<div dangerouslySetInnerHTML={{__html: 'First &middot; Second'}} />
+```
+
+**Event Handlers**: Abstracted away for IE8 and above with SynctheticEvent. One EventHandler attached at the root node. `this` set.  
+`e.preventDefault()` and `e.stopPropagation()`
 
 
 
 
 
-ReactElement:  
-displayName is inferred
-getDefaultProps is cached
-propTypes check only in development
-state should be immutable
-props should be immutable
-Mixins is on the way out
+ReactElement  
+------------
+**render** is required  
+**displayName** is inferred  
+**getDefaultProps** is cached  
+**getInitialState** can use props    
+**propTypes** check only in development  
+**state** should be immutable  
+**props** should be immutable  
+**mixins** are on the way out  
+**statics** does exactly that
 
-Props vs State:  
+_-- Life Cycle --_  
+**componentWillMount** is invoked once before the initial render    
+**componentDidMount** is invoked once immediately after the initial render (AJAX, timers, DOM manipulation, ...)
+
+_-- after initial render --_  
+**componentWillReceiveProps**(nextProps) to change state and rerender   
+    
+**shouldComponentUpdate**(nextProps, nextState) returns true by default
+  
+**componentWillUpdate**(nextProps, nextState) do not use `this.setState()` here  
+**componentDidUpdate**(prevProps, prevState) to operate on the DOM  
+
+**componentWillUnmount** for cleanup
+
+
+
+
+**Props vs State:**  
 Do not write to props  
 Most components should be stateless  
 
-A common pattern is to create several stateless components that just render data, and have a stateful component above them in the hierarchy that passes its state to its children via props. The stateful component encapsulates all of the interaction logic, while the stateless components take care of rendering data in a declarative way.
+_A common pattern is to create several stateless components that just render data, and have a stateful component above them in the hierarchy that passes its state to its children via props. The stateful component encapsulates all of the interaction logic, while the stateless components take care of rendering data in a declarative way._
 
-
+```
 React.createClass({
   propTypes: {
     // You can declare that a prop is a specific JS primitive. By default, these
@@ -133,12 +158,13 @@ React.createClass({
   },
   /* ... */
 });
-
+```
 
 ES6
 ---
 https://facebook.github.io/react/docs/reusable-components.html#es6-classes
 
+```
 class HelloMessage extends React.Component {
   render() {
     return <div>Hello {this.props.name}</div>;
@@ -165,16 +191,17 @@ export class Counter extends React.Component {
 }
 Counter.propTypes = { initialCount: React.PropTypes.number };
 Counter.defaultProps = { initialCount: 0 };
-
+```
 
 
 Forms
 -----
-onChange
-e.preventDefault / e.stopPropagation
-value / defaultValue / defaultChecked
+onChange  
+e.preventDefault / e.stopPropagation  
+value / defaultValue / defaultChecked  
 --> Even value for textareas
 
+```
 <select value="B">
 	<option value="A">Apple</option>
 	<option value="B">Banana</option>
@@ -182,24 +209,29 @@ value / defaultValue / defaultChecked
 </select>
 
 <select multiple={true} value={['B', 'C']}>
+```
 
 Refs
 ----
-Avoid!
+Avoid (when possible)!  
+Potential use: Working with legacy code
 
+```
 render: function() {
     return <TextInput ref={(c) => this._input = c} />;
   },
   componentDidMount: function() {
     this._input.focus();
   },
+```
 
-ref as string is mostly legacy at this point:  
+ref as string is mostly legacy at this point:
+```  
 <input ref="myInput" />
 var input = this.refs.myInput.value;
-
+```
 
 Other
 -----
-Context: for current language?
+Context: for current language?  
 https://facebook.github.io/react/docs/context.html
