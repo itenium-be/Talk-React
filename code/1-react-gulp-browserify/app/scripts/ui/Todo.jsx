@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var toTitleCase = require('titlecase');
 
 var Todo = React.createClass({
   displayName: 'TodoForm',
@@ -29,14 +30,17 @@ var Todo = React.createClass({
   }
 });
 
+
+
 Todo.List = React.createClass({
   displayName: 'TodoList',
   propTypes: {
     items: React.PropTypes.arrayOf(React.PropTypes.string)
   },
   render: function() {
+    console.log('grr', toTitleCase('does it really work'));
     var createItem = function(itemText) {
-      return <li>{itemText}</li>;
+      return <li>{toTitleCase(itemText)}</li>;
     };
     return <ul>{this.props.items.map(createItem)}</ul>;
   }
